@@ -19,6 +19,9 @@ WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "ca
 time.sleep(2)
 
 images = []
+client = ollama.Client(
+    host="http://100.110.46.126:5001",
+)
 
 i = 0
 while True:
@@ -40,7 +43,7 @@ while True:
         for img in images
     ]
 
-    response = ollama.chat(
+    response = client.chat(
         model="llama3.2-vision",
         messages=[
             {
